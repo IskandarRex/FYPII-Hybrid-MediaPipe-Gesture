@@ -738,7 +738,7 @@ while True:
             ####TRY LAND/TAKEOFF COMMAND
             try:
                 # Drone Landing
-                if ((in_circle(int(img_w * 0.2), int(img_h * 0.5), 225, mesh_points[NOSE_CENTER][0]) or in_circle(int(img_w * 0.8), int(img_h * 0.5), 225, mesh_points[NOSE_CENTER][0])) and eye_open and not eyemode and flight) or key == "l" or key == "L" :
+                if ((h_h_position == "RIGHT" or h_h_position == "LEFT") and eye_open and not eyemode and flight) or key == "l" or key == "L" :
                     counterLand += 1
 
                     '''
@@ -759,7 +759,7 @@ while True:
                         flight = not flight
                         print(f'flight is {flight}')
 
-                elif (in_circle(int(img_w * 0.2), int(img_h * 0.5), 225, mesh_points[NOSE_CENTER][0]) or in_circle(int(img_w * 0.8), int(img_h * 0.5), 225, mesh_points[NOSE_CENTER][0])) and not flight and not eyemode:
+                elif (h_h_position == "RIGHT" or h_h_position == "LEFT") and not flight and not eyemode:
                     counterTakeoff += 1
                     if   in_circle(int(img_w * 0.2), int(img_h * 0.5), 225, mesh_points[NOSE_CENTER][0]) and not eyemode:
                         cv.putText(frame, f'Fly Drone?', mesh_points[346], cv.FONT_HERSHEY_PLAIN, 1.5,
